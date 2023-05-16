@@ -9,10 +9,16 @@
       "email": "niirrty+code@gmail.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/Cherrg/Niirrty.Date.git"
+    }
+  ],
   "require": {
     "php": ">=7.1",
     "niirrty/niirrty.io": "^0.3",
-    "niirrty/niirrty.date": "^0.3",
+    "niirrty/niirrty.date": "dev-php8_updates",
     "psr/log": "^1.0"
   },
   "require-dev": {
