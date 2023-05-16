@@ -140,7 +140,7 @@ class DefinitionCollection implements ArrayAccess, IteratorAggregate, Countable
      *                 was returned.
      * @link  http://php.net/manual/en/arrayaccess.offsetexists.php
      */
-    public function offsetExists( $offset )
+    public function offsetExists( $offset ): bool
     {
 
         return isset( $this->_data[ $offset ] );
