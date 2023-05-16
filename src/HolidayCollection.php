@@ -19,6 +19,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Niirrty\Date\DateTime;
+use Traversable;
 use function array_keys;
 use function array_search;
 use function count;
@@ -111,7 +112,7 @@ class HolidayCollection implements ArrayAccess, IteratorAggregate, Countable
      * @link  http://php.net/manual/en/iteratoraggregate.getiterator.php
      * @return ArrayIterator An instance of an object implementing <b>Iterator</b> or <b>Traversable</b>
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
 
         return new ArrayIterator( $this->_data );
@@ -132,7 +133,7 @@ class HolidayCollection implements ArrayAccess, IteratorAggregate, Countable
      *                 was returned.
      * @link  http://php.net/manual/en/arrayaccess.offsetexists.php
      */
-    public function offsetExists( $offset )
+    public function offsetExists( $offset ): bool
     {
 
         return isset( $this->_data[ $offset ] );
@@ -147,7 +148,7 @@ class HolidayCollection implements ArrayAccess, IteratorAggregate, Countable
      * @return Holiday
      * @link   http://php.net/manual/en/arrayaccess.offsetget.php
      */
-    public function offsetGet( $offset )
+    public function offsetGet( $offset ): mixed
     {
 
         return $this->_data[ $offset ];
@@ -163,7 +164,7 @@ class HolidayCollection implements ArrayAccess, IteratorAggregate, Countable
      * @throws Exception
      * @link   http://php.net/manual/en/arrayaccess.offsetset.php
      */
-    public function offsetSet( $offset, $value )
+    public function offsetSet( $offset, $value ): void
     {
 
         if ( !( $value instanceof Holiday ) )
@@ -189,7 +190,7 @@ class HolidayCollection implements ArrayAccess, IteratorAggregate, Countable
      *
      * @link  http://php.net/manual/en/arrayaccess.offsetunset.php
      */
-    public function offsetUnset( $offset )
+    public function offsetUnset( $offset ): void
     {
 
         unset( $this->_data[ $offset ] );
@@ -207,7 +208,7 @@ class HolidayCollection implements ArrayAccess, IteratorAggregate, Countable
      * @return int The custom count as an integer. The return value is cast to an integer.
      * @link   http://php.net/manual/en/countable.count.php
      */
-    public function count()
+    public function count(): int
     {
 
         return count( $this->_data );

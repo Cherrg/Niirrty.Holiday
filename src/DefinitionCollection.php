@@ -21,6 +21,7 @@ use IteratorAggregate;
 use Niirrty\Holiday\Callbacks\EasterDateCallback;
 use Niirrty\Holiday\Callbacks\IDynamicDateCallback;
 use Psr\Log\LoggerInterface;
+use Traversable;
 use function array_keys;
 use function array_search;
 use function count;
@@ -118,7 +119,7 @@ class DefinitionCollection implements ArrayAccess, IteratorAggregate, Countable
      * @link  http://php.net/manual/en/iteratoraggregate.getiterator.php
      * @return ArrayIterator An instance of an object implementing <b>Iterator</b> or <b>Traversable</b>
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
 
         return new ArrayIterator( $this->_data );
@@ -154,7 +155,7 @@ class DefinitionCollection implements ArrayAccess, IteratorAggregate, Countable
      * @return Definition
      * @link   http://php.net/manual/en/arrayaccess.offsetget.php
      */
-    public function offsetGet( $offset )
+    public function offsetGet( $offset ): mixed
     {
 
         return $this->_data[ $offset ];
@@ -170,7 +171,7 @@ class DefinitionCollection implements ArrayAccess, IteratorAggregate, Countable
      * @throws Exception
      * @link   http://php.net/manual/en/arrayaccess.offsetset.php
      */
-    public function offsetSet( $offset, $value )
+    public function offsetSet( $offset, $value ): void
     {
 
         if ( !( $value instanceof Definition ) )
@@ -196,7 +197,7 @@ class DefinitionCollection implements ArrayAccess, IteratorAggregate, Countable
      *
      * @link  http://php.net/manual/en/arrayaccess.offsetunset.php
      */
-    public function offsetUnset( $offset )
+    public function offsetUnset( $offset ): void
     {
 
         unset( $this->_data[ $offset ] );
@@ -214,7 +215,7 @@ class DefinitionCollection implements ArrayAccess, IteratorAggregate, Countable
      * @return int The custom count as an integer. The return value is cast to an integer.
      * @link   http://php.net/manual/en/countable.count.php
      */
-    public function count()
+    public function count(): int
     {
 
         return count( $this->_data );
